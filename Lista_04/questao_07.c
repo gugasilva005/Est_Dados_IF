@@ -19,7 +19,7 @@ int identifica_vogais(char nome[]) {
 
 int main(void) {
 
-    char nome[30];
+    char nome[100];
     int vogais;
 
     printf("Digite um nome: ");
