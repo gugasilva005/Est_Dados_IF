@@ -1,12 +1,10 @@
 #include <stdio.h>
 #define TAM 10
 
-void multiplica_2(int *array[], int tamanho) {
-    int *p_v = array;
-
+void multiplica_2(int *array, int tamanho) {
     for (int i = 0; i < tamanho; i++) {
-        *p_v *= 2;
-        p_v++;
+        *array *= 2;
+        array++;
     }
 }
 
@@ -24,7 +22,7 @@ int main(void) {
     }
 
     printf("\n");
-    multiplica_2(&array_num, TAM);
+    multiplica_2(array_num, TAM);
 
     for (int i = 0; i < TAM; i++) {
         printf("%d\t", array_num[i]);
