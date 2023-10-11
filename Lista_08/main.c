@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "lista.c"
 
@@ -6,6 +7,7 @@ int main(void) {
     Lista le;
     int escolha;
     int elem;
+    char s_or_n;
 
     criar(&le);
     do {
@@ -18,8 +20,9 @@ int main(void) {
       case 1:
         if (vazia(&le)){
           printf("A lista está vazia, não há nada para exibir");
+        } else {
+          exibir(&le);
         }
-        exibir(&le);
         break;
       case 2:
         printf("Digite o elemento a ser inserido na lista: ");
@@ -31,6 +34,34 @@ int main(void) {
         scanf("%d", &elem);
         remover(&le, elem);
         printf("Elemento removido com sucesso.");
+        break;
+      case 4:
+        printf("Digite um elemento a ser buscado na lista: ");
+        scanf("%d", &elem);
+        int pos = busca(&le, elem);
+        if (pos == -1){
+          printf("O elemento não se encontra na lista.");
+          break;
+        } else {
+          printf("O elemento está na posição %d", pos);
+          break;
+        }
+      case 5:
+        printf("Você deseja esvaziar a lista? s/n ");
+        scanf("%s", &s_or_n);
+        if (s_or_n == 's') {
+          esvaziar(&le);
+          printf("Lista esvaziada com sucesso.");
+          break;
+        } else {
+          printf("\nAção encerrada");
+          break;
+        }
+      case 6:
+        printf("Programa encerrado com sucesso!!!");
+        break;
+      default:
+        printf("Opção inválida. Tente novamente um número indicado no MENU!!!");
     }
     printf("\n\n");
   } while (escolha != 6);

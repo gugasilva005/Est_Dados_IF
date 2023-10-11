@@ -86,3 +86,15 @@ int remover(Lista *l, int elem) {
     free(temp);
     return 1;
 }
+
+void esvaziar(Lista *l) {
+    Node *aux = l->inicio;
+    Node *temp;
+
+    while (aux != NULL) {
+        temp = aux->prox;
+        free(aux);
+        aux = temp;
+    }
+    l->inicio = NULL;
+}

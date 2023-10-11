@@ -27,3 +27,6 @@ int busca(Lista *l, int elem);
 
 // Função para remover um elemento da lista
 int remover(Lista *l, int elem);
+
+// Função para esvaziar completamente uma lista
+void esvaziar(Lista *l);
