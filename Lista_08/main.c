@@ -11,7 +11,7 @@ int main(void) {
 
     criar(&le);
     do {
-    printf("Editor de Lista\n1 - Exibir Lista\n2 - Inserir\n3 - Remover\n4 - Exibir posição\n5 - Esvaziar lista\n6 - Sair");
+    printf("Editor de Lista\n1 - Exibir Lista\n2 - Inserir\n3 - Remover\n4 - Exibir posição\n5 - Esvaziar lista\n6 - Buscar elemento\n7 - Sair");
     printf("\n\nDigite a opção: ");
     scanf("%d", &escolha);
     printf("\n");
@@ -58,13 +58,23 @@ int main(void) {
           break;
         }
       case 6:
+        printf("Digite uma posição da lista para obter o elemento: ");
+        scanf("%d", &pos);
+        if (obterElemento(&le, pos, &elem) == -1) {
+          printf("Posição inválida.");
+          break;
+        } else {
+          printf("O elemento da posição %d é o %d", pos, elem);
+          break;
+        }
+      case 7:
         printf("Programa encerrado com sucesso!!!");
         break;
       default:
         printf("Opção inválida. Tente novamente um número indicado no MENU!!!");
     }
     printf("\n\n");
-  } while (escolha != 6);
+  } while (escolha != 7);
 
   return 0;
 }

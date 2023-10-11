@@ -22,7 +22,7 @@ int inserir(Lista *l, int elem);
 // Função para exibir a lista
 void exibir(Lista *l);
 
-// Função para buscar um elemento na lista
+// Função para buscar um elemento na lista (retorna posição)
 int busca(Lista *l, int elem);
 
 // Função para remover um elemento da lista
@@ -30,3 +30,6 @@ int remover(Lista *l, int elem);
 
 // Função para esvaziar completamente uma lista
 void esvaziar(Lista *l);
+
+// Função para retornar um elemento a partir de uma posição
+int obterElemento(Lista *l, int pos, int *elem);

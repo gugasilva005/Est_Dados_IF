@@ -98,3 +98,20 @@ void esvaziar(Lista *l) {
     }
     l->inicio = NULL;
 }
+
+int obterElemento(Lista *l, int pos, int *elem){
+    Node *aux = l->inicio;
+    int i = 0;
+
+    while (aux != NULL && i < pos) {
+        aux = aux->prox;
+        i++;
+    }
+
+    if (aux == NULL || i > pos) {
+        return -1;
+    }
+    
+    *elem = aux->dado;
+    return 1;
+}
