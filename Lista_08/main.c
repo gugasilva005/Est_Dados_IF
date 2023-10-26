@@ -64,7 +64,7 @@ int main(void) {
           printf("Posição inválida.");
           break;
         } else {
-          printf("O elemento da posição %d é o %d", pos, elem);
+          printf("O elemento da posição %d é o [ %d ]", pos, elem);
           break;
         }
       case 7:
