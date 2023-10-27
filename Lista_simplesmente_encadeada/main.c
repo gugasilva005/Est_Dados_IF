@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "listadinalu.h"
+#include "listadinalu.c"
 
 int main(void) {
   ListaAluno lista_alunos;
@@ -46,7 +46,13 @@ int main(void) {
 
   printf("\n\n");
 
-  char nome_procurar[30] = "Gustavo";
-  exibir_aluno_nome(&lista_alunos, nome_procurar);
+  int matricula4 = 400;
+  char nome4[30] = "Pedro";
+  float nota7 = 9.0;
+  float nota8 = 10.0;
+  int pos = 4;
+
+  inserir_na_posicao(&lista_alunos, matricula4, nome4, nota7, nota8, pos);
+  //exibir_lista(&lista_alunos);
     
 }

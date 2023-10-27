@@ -26,7 +26,7 @@ int tamanho(ListaAluno *l);
 int inserir_aluno(ListaAluno *l, int matricula, char nome[30], float nota1, float nota2);
 
 // Função para adicionar um novo aluno em uma posição específica da lista
-int inserir_na_posição(ListaAluno *l, int matricula, char nome[30], float nota1, float nota2);
+int inserir_na_posicao(ListaAluno *l, int matricula, char nome[30], float nota1, float nota2, int posicao);
 
 // Função para procurar os dados de um aluno via MATRÍCULA
 void exibir_aluno(ListaAluno *l, int matricula);

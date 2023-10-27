@@ -152,6 +152,46 @@ void exibir_aluno_nome(ListaAluno *l, char nome[30]) {
   printf("Esse nome não está registrado.");
 }
 
-int inserir_na_posição(ListaAluno *l, int matricula, char nome[30], float nota1, float nota2) {
-  
+int inserir_na_posicao(ListaAluno *l, int matricula, char nome[30], float nota1, float nota2, int posicao) {
+
+    if (posicao < 0) {
+        printf("\nPosição inválida na lista.\n");
+        return 0;
+    }
+
+    Node *novo = (Node *) malloc(sizeof(Node));
+    if (novo == NULL) {
+        printf("\nErro na alocação de memória.\n");
+        return 0;
+    }
+
+    novo->dado.matricula = matricula;
+    strncpy(novo->dado.nome, nome, 30);
+    novo->dado.nota1 = nota1;
+    novo->dado.nota2 = nota2;
+
+    if (posicao == 0) {
+        novo->prox = l->inicio;
+        l->inicio = novo;
+    } else {
+        Node *ant = l->inicio;
+        int i = 0;
+
+        while (ant != NULL && i < posicao-1) {
+            ant = ant->prox;
+            i++;
+        }
+
+        if (ant == NULL) {
+            printf("\nPosição inválida na lista.\n");
+            free(novo);
+            return 0;
+        }
+
+        novo->prox = ant->prox;
+        ant->prox = novo;
+    }
+
+    return 1;
 }
+
