@@ -58,8 +58,8 @@ void exibir_aluno(ListaAluno *l, int matricula) {
         if (aux->dado.matricula == matricula) { // Percorre a lista procurando a matrícula
             printf("Matricula: %d\n", aux->dado.matricula);
             printf("Nome: %s\n", aux->dado.nome);
-            printf("Nota 1: %.1f\n", aux->dado.nota1);
-            printf("Nota 2: %.1f\n", aux->dado.nota2);
+            printf("1º nota: %.1f\n", aux->dado.nota1);
+            printf("2º nota: %.1f\n", aux->dado.nota2);
             return;
         }
         aux = aux->prox;
@@ -73,7 +73,7 @@ void exibir_lista(ListaAluno *l) {
     printf("Alunos: \n");
     for (Node *aux = l->inicio; aux != NULL; aux = aux->prox) {
         printf("---------------------------\n");
-        printf("%s --- %d\n", aux->dado.nome, aux->dado.matricula);
+        printf("Nome:%s Matrícula: %d\n", aux->dado.nome, aux->dado.matricula);
         printf("Notas: 1º - %.1f | 2º - %.1f\n", aux->dado.nota1, aux->dado.nota2);
         printf("---------------------------");
         printf("\n\n");
@@ -83,14 +83,19 @@ void exibir_lista(ListaAluno *l) {
 
 void exibir_aluno_posicao(ListaAluno *l, int pos) {
     Node *aux = l->inicio;
+    int cont = 0;
+    
+    while (aux != NULL && cont < pos) {
+        aux = aux->prox;
+        cont++;
+    }
 
-    if (tamanho(l) < pos) {
-        printf("Posição inválida.");
+    if (aux == NULL) {
+        printf("Posição inválida.\n");
     } else {
-        for (aux; aux < pos; aux = aux->prox);
-
-        printf("%s --- %d\n", aux->dado.nome, aux->dado.matricula);
-        printf("Notas: 1º - %.1f | 2º - %.1f\n", aux->dado.nota1, aux->dado.nota2);
+        printf("Nome: %s", aux->dado.nome);
+        printf("\nMatrícula: %d", aux->dado.matricula);
+        printf("\nNotas: 1º - %.1f | 2º - %.1f", aux->dado.nota1, aux->dado.nota2);
     }
 
 }
@@ -138,17 +143,16 @@ void exibir_aluno_nome(ListaAluno *l, char nome[30]) {
   Node *aux = l->inicio;
 
   while (aux != NULL) {
-      if (strcmp(aux->dado.nome, nome) == 0) { // Percorre a lista procurando o nome
+      if (strcmp(aux->dado.nome, nome) == 0) { 
           printf("Matricula: %d\n", aux->dado.matricula);
-          printf("Nome: %s\n", aux->dado.nome);
+          printf("Nome: %s", aux->dado.nome);
           printf("Nota 1: %.1f\n", aux->dado.nota1);
           printf("Nota 2: %.1f\n", aux->dado.nota2);
-          return;
       }
+      printf("\n");
       aux = aux->prox;
   }
 
-  // Caso não encontre o aluno
   printf("Esse nome não está registrado.");
 }
 
@@ -190,8 +194,34 @@ int inserir_na_posicao(ListaAluno *l, int matricula, char nome[30], float nota1,
 
         novo->prox = ant->prox;
         ant->prox = novo;
+        return 1;
     }
 
-    return 1;
+}
+
+int remover_pos(ListaAluno *l, int pos) {
+    if (vazia(l)) {
+        return 0;
+    } if (pos == 0) {
+        Node *temp = l->inicio;
+        l->inicio = l->inicio->prox;
+        free(temp);
+        return 1;
+    }
+
+    if (pos >= tamanho(l)) {
+        printf("Posição inválida na lista.");
+        return 0;
+    } else {
+        Node *aux = l->inicio;
+        for (int i = 0; i < pos-1; i++) {
+            aux = aux->prox;
+        }
+
+        Node *temp = aux->prox;
+        aux->prox = aux->prox->prox;
+        free(temp);
+        return 1;
+    }
 }
 

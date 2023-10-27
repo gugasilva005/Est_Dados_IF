@@ -45,3 +45,9 @@ void exibir_aluno_posicao(ListaAluno *l, int pos);
 
 // Função para remover um aluno da lista via matrícula
 int remover(ListaAluno *l, int matricula);
+
+// Função para remover um aluno da lista via posição
+int remover_pos(ListaAluno *l, int pos);
+
+// Função para buscar um aluno via matrícula OU nome
+// int exibir_aluno_escolha(ListaAluno *l, int escolha, int matricula);
