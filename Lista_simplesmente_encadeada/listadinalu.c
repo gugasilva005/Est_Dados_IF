@@ -133,3 +133,25 @@ int remover(ListaAluno *l, int matricula) {
     free(temp);
     return 1;
 }
+
+void exibir_aluno_nome(ListaAluno *l, char nome[30]) {
+  Node *aux = l->inicio;
+
+  while (aux != NULL) {
+      if (strcmp(aux->dado.nome, nome) == 0) { // Percorre a lista procurando o nome
+          printf("Matricula: %d\n", aux->dado.matricula);
+          printf("Nome: %s\n", aux->dado.nome);
+          printf("Nota 1: %.1f\n", aux->dado.nota1);
+          printf("Nota 2: %.1f\n", aux->dado.nota2);
+          return;
+      }
+      aux = aux->prox;
+  }
+
+  // Caso não encontre o aluno
+  printf("Esse nome não está registrado.");
+}
+
+int inserir_na_posição(ListaAluno *l, int matricula, char nome[30], float nota1, float nota2) {
+  
+}
