@@ -151,3 +151,8 @@ int main(void) {
     printf("\n\n");
   } while(escolha != 8);
 }
+
+/*
+OBS.: Algumas funções tem dado problema na minha máquina. Algumas vezes ela solta ,após o printf de uma string, um "\n" aleatório.
+Por isso, algumas das funções ñ tem "\n" e talvez possa printar tudo junto.
+*/
