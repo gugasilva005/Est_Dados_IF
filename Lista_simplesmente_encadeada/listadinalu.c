@@ -57,7 +57,7 @@ void exibir_aluno(ListaAluno *l, int matricula) {
     while (aux != NULL) {
         if (aux->dado.matricula == matricula) { // Percorre a lista procurando a matrícula
             printf("Matricula: %d\n", aux->dado.matricula);
-            printf("Nome: %s\n", aux->dado.nome);
+            printf("Nome: %s", aux->dado.nome);
             printf("1º nota: %.1f\n", aux->dado.nota1);
             printf("2º nota: %.1f\n", aux->dado.nota2);
             return;
@@ -70,11 +70,12 @@ void exibir_aluno(ListaAluno *l, int matricula) {
 }
 
 void exibir_lista(ListaAluno *l) {
-    printf("Alunos: \n");
+    printf("\nAlunos: \n");
     for (Node *aux = l->inicio; aux != NULL; aux = aux->prox) {
         printf("---------------------------\n");
-        printf("Nome:%s Matrícula: %d\n", aux->dado.nome, aux->dado.matricula);
-        printf("Notas: 1º - %.1f | 2º - %.1f\n", aux->dado.nota1, aux->dado.nota2);
+        printf("Nome:%s", aux->dado.nome);
+        printf("Matrícula: %d", aux->dado.matricula);
+        printf("\nNotas: 1º - %.1f | 2º - %.1f\n", aux->dado.nota1, aux->dado.nota2);
         printf("---------------------------");
         printf("\n\n");
     }
@@ -141,19 +142,23 @@ int remover(ListaAluno *l, int matricula) {
 
 void exibir_aluno_nome(ListaAluno *l, char nome[30]) {
   Node *aux = l->inicio;
+  int encontrado = 0;
 
   while (aux != NULL) {
       if (strcmp(aux->dado.nome, nome) == 0) { 
-          printf("Matricula: %d\n", aux->dado.matricula);
-          printf("Nome: %s", aux->dado.nome);
+          printf("Matricula: %d", aux->dado.matricula);
+          printf("\nNome: %s", aux->dado.nome);
           printf("Nota 1: %.1f\n", aux->dado.nota1);
           printf("Nota 2: %.1f\n", aux->dado.nota2);
+          encontrado = 1;
+          printf("\n");
       }
-      printf("\n");
       aux = aux->prox;
   }
 
-  printf("Esse nome não está registrado.");
+    if (!encontrado) {
+        printf("Esse nome não está registrado.");
+    }
 }
 
 int inserir_na_posicao(ListaAluno *l, int matricula, char nome[30], float nota1, float nota2, int posicao) {

@@ -77,6 +77,7 @@ int main(void) {
         if (metodo_busca == 1) {
           printf("\nDigite a matrícula do aluno: ");
           scanf("%d", &busca_matricula);
+          printf("\n");
           exibir_aluno(&lista_alunos, busca_matricula);
           break;
         } 
@@ -84,7 +85,7 @@ int main(void) {
           printf("\nDigite o nome do aluno a ser procurado: ");
           setbuf(stdin, NULL);
           fgets(busca_nome, 30, stdin);
-          printf("\nResultado(s) encontrados:\n");
+          printf("\nResultado(s) encontrados:\n\n");
           exibir_aluno_nome(&lista_alunos, busca_nome);
           break;
         }
@@ -98,7 +99,8 @@ int main(void) {
           break;
         }
 
-        printf("\nVocê tem certeza que deseja excluir esse aluno da lista? s/n");
+        setbuf(stdin, NULL);
+        printf("\nVocê tem certeza que deseja excluir esse aluno da lista? (s/n): ");
         scanf("%c", &s_n);
         if (s_n == 'n'){
           printf("\nAção encerrada.");
@@ -141,10 +143,10 @@ int main(void) {
         printf("%d", tam);
         break;
       case 8:
-        printf("Progama encerrado.");
+        printf("\nProgama encerrado.");
         break;
       default:
-        printf("Opção inválida. Escolha uma das opções indicadasd no MENU.");
+        printf("\nOpção inválida. Escolha uma das opções indicadasd no MENU.");
     }
     printf("\n\n");
   } while(escolha != 8);
