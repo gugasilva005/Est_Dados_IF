@@ -1,0 +1,105 @@
+Lista Duplamente Encadeada em c
+
+Buscar por um elemento na lista Duplamente Encadeada:
+    - Há mais de uma forma para procurar - Início ou Fim
+    - Mas a rotina continua parecida com a da simplesmente encadeada
+
+O nó é composto por:[] 
+
+typedef struct node {
+    int dado;
+    struct node *prox;
+    struct node *ant;
+} Node;
+
+Possui a informação do dado próximo da lista e do dado anterior da lista
+para operações de inserção, podem ser feitas pelo início ou pelo final da lista
+
+Via início ou fim (segue a mesma linha de raciocínio) {
+    novo->prox = l->inicio;
+    novo->ant = NULL;
+    inicio->ant = novo;
+    inicio = novo;
+    l->tamanho++;
+} Nesta ordem de execução;
+
+Inserção na posição (Lista *l, int elem, int pos) {
+    há diferenças em comparação a lista simplesmente encadeada, já que os elementos da lista tem o referenciamento do prox e do ant, então {
+        Node *aux = l->inicio;
+        o aux vai até o nó anterior da posição de inserção (novo)
+        o anterior do novo referencia o auxiliar
+        o próximo do auxiliar referencia o novo
+        o próximo do anterior do auxiliar referencia o novo
+        o próximo do novo referencia o próximo do aux
+    }
+
+    if (pos < 0 || pos > l->tamanho) { //posição inválida na lista
+        return 0;
+    } if (pos == 0) { // Iserção no início
+        Rotina de inserir no início;
+        return 1;
+    } if (pos == l->tamanho) { // Inserção no final
+        Rotina para inserção(normal);
+        return 1;
+    }
+
+    Node *novo = (Node *)malloc(sizeof(Node));
+    Node *aux = l->inicio;
+
+    for (int i = 0; i < pos; i++) {
+        aux = aux->prox;
+    }
+
+    novo->dado = elem;
+    novo->ant = aux;
+    novo->prox = aux->prox;
+    aux->prox->ant = novo;
+    aux->prox = novo;
+    l->tamanho++;
+    return 1;
+}
+
+Operação de remoção de elementos da lista
+
+remoção no início da lista (ListaDE *l) {
+    if (vazia(l)) {
+        return 0;
+    }
+
+    Node *temp = l->inicio;
+    l->inicio = l->inicio->prox;
+    l->inicio->ant = NULL;
+    free(temp);
+    l->tamanho--;
+}
+
+remoção no fim da lista (ListaDE *l) {
+    if (vazia(l)) {
+        return 0;
+    }
+
+    Node *temp = l->fim;
+    l->fim = l->fim->ant;
+    l->fim-prox = NULL;
+    free(temp);
+    l->tamanho--;
+    return 1;
+}
+
+remover na posição (ListaDE *l, int pos) {
+    Node *aux = l->inicio
+    for (int i = 0; i < pos; i++) {
+        aux = aux->prox;
+    }
+
+    Node *temp = aux->prox;
+    forma 1 de remover {
+        aux->prox = aux->prox->prox;
+        aux->prox->ant = aux;
+    } forma 2 de remover {
+        aux->prox->prox->ant = aux;
+        aux->prox = aux->prox->prox;
+    }
+    free(temp);
+    l->tamanho--;
+}
