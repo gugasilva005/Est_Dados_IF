@@ -1,3 +1,8 @@
 
 lab_est_dados/.vscode/questao01.exe
 *.exe
+.zip
+fila_teste.c
+pilha_teste.c
+questao_08_prova.c
+teste.c

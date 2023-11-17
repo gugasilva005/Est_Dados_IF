@@ -150,6 +150,7 @@ int main(void) {
     }
     printf("\n\n");
   } while(escolha != 8);
+  return 0;
 }
 
 /*
