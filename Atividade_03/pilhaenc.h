@@ -35,3 +35,6 @@ void exibir(Pilha *p);
 
 // Função para retornar o topo
 int topo(Pilha *p);
+
+// Função para inverter a pilha
+void inverte_pilha(Pilha *p);

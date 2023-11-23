@@ -69,3 +69,23 @@ int topo(Pilha *p) {
     }
     return p->topo->dado;
 }
+
+void inverte_pilha(Pilha *p) {
+    if (vazia(p)) {
+        printf("A pilha está vazia.\n");
+        return ;
+    }
+
+    Node *ant = NULL;
+    Node *aux = p->topo;
+    Node *prox = NULL;
+
+    while (aux != NULL) {
+        prox = aux->prox;
+        aux->prox = ant;
+        ant = aux;
+        aux = prox;
+    }
+
+    p->topo = ant;
+}
