@@ -1,0 +1,23 @@
+\\Métodos de Busca e Pesquisa de Dados//
+    - Métodos para localizar efecientemente elementos em um conjunto de dados
+    - A busa é um operação frequente em aplicações e manipulações de estruturas de dados
+    - A busca normalmente ocorre por meio de um campo que denominamos chave - Uma chave para uma fechadura
+    - Métodos ou algoritmos de busca:
+        - Busca Linear
+        - Busaca Linear Ordenada
+        - Busca Binária
+    - Busca Linear
+        - Percorrer a lista, elemento a elemento, verificando a existência da chave de pesquisa
+        - Propósito - descobrir em que posição se encontra um elemento (chave)
+    - Busca Linear Ordenada
+        - Compara a chabe com o elemento a cada passada
+        - Uma chave não estará presente na lista se acharmos um elemento maior que o mesmo
+        - Se a chave não estiver na lista, este algoritmo se comporta um pouco mais otimizado que a Busca Linear
+        - A eficiência de busca pode melhorar em listas ordenadas
+    - Busca Binária
+        - Princípio de funcionamento:
+            - A lista deve estar ordenada
+            - Caso a chave seja menor que o elemento armazenado no meio da lista:
+                - Se for menor, a chave estará a esquerda 
+            - Vantagem - Desempenho superior ao de busca linear
+            - Desvantagem - 
