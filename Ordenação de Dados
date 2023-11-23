@@ -1,0 +1,28 @@
+\\ Ordenação de Dados //
+
+- Existem alguns métodos de ordenação propostos na literatura
+    - Ordenação por bolha (Bubble Sort)
+    - Ordenação por seleção (Selection sort)
+    - Ordenação por inserção (Insert sort)
+
+- Bubble Sort:
+    - Um dos mais conhecidos algoritmos de ordenação
+    - Funcionamento:
+        - Compara pares de valores adjacentes (vizinhos) e os troca de lugar se estiverem na ordem errada
+    - Teste de mesa - 62 28 26 71 27
+    void ordena_bolha(int v[], int tam) {
+        int aux;
+        int n = tam;
+        for (int i = 0; i < n; i ++) {
+            for (int j = 1; j < n-1; j++) {
+                if (v[j-1] > v[j]) {
+                    aux = v[j];
+                    v[j] = v[j-1];
+                    v[j-1] = aux;
+                }
+            }
+        }
+    }
+    - Simples de implementar
+    - Está entros os métodos de ordenação mais conhecidos
+    - Porém não é um algoritmo eficiente
